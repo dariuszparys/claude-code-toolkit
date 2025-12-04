@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE 'docs/adr/.*\\.md$'; then markdownlint --fix \"$file_path\" 2>/dev/null; errors=$(markdownlint \"$file_path\" 2>&1); if [ $? -ne 0 ]; then jq -n --arg err \"$errors\" '{decision:\"block\",reason:(\"Markdown lint errors:\\n\" + $err)}'; exit 2; fi; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

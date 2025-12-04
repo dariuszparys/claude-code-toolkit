@@ -1,6 +1,6 @@
 # claudecode-enhancements
 
-Custom slash commands for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+Custom slash commands and hooks for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
 
 ## Installation
 
@@ -16,43 +16,46 @@ Or copy individual command namespaces:
 cp -r commands/dp ~/.claude/commands/
 ```
 
-## Available Commands
+To use the hooks, copy `settings.json` to your project:
 
-### `dp` namespace
+```bash
+cp settings.json /path/to/your/project/.claude/settings.json
+```
 
-| Command | Description |
-|---------|-------------|
-| `/dp:create-claude-md` | Generate or update CLAUDE.md following best practices |
+## Command: `/dp:create-claude-md`
 
-## Usage
+Generates or updates a `CLAUDE.md` file following best practices for AI agent onboarding.
 
-After installation, commands are available in any Claude Code session:
+**What it does:**
+
+- Auto-detects context (repo root vs subdirectory)
+- Explores directory structure and existing documentation
+- Generates concise, actionable CLAUDE.md content
+- Root files: 60-100 lines covering stack, commands, structure, rules, domain
+- Subdirectory files: 30-50 lines with package-specific additions only
+
+**Usage:**
 
 ```
 /dp:create-claude-md
 ```
 
-## Creating New Commands
+## Hook: ADR Markdown Linting
 
-1. Create a markdown file in `commands/<namespace>/<command-name>.md`
-2. Add frontmatter:
-   ```yaml
-   ---
-   description: Short description shown in command list
-   allowed-tools: Tool1, Tool2  # Optional: restrict available tools
-   ---
-   ```
-3. Write the prompt template below the frontmatter
+A `PostToolUse` hook that enforces markdown standards on Architecture Decision Records.
 
-### Example
+**Behavior:**
 
-```markdown
----
-description: Run tests and fix failures
-allowed-tools: Bash, Read, Edit
----
+- Triggers on `Edit` or `Write` operations
+- Only affects files matching `docs/adr/*.md`
+- Auto-fixes issues with `markdownlint --fix`
+- Blocks the operation if unfixable lint errors remain
 
-# Task: Fix Failing Tests
+## Prerequisites
 
-Run the test suite and fix any failures you find.
-```
+The ADR linting hook requires:
+
+| Tool | Install |
+|------|---------|
+| `markdownlint-cli` | `npm install -g markdownlint-cli` |
+| `jq` | `brew install jq` or `apt-get install jq` |

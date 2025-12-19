@@ -1,4 +1,4 @@
-# Project: claudecode-enhancements
+# Project: claude-code-toolkit
 
 Claude Code plugin marketplace with custom commands, skills, and hooks.
 

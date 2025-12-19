@@ -1,4 +1,4 @@
-# claudecode-enhancements
+# claude-code-toolkit
 
 A Claude Code plugin marketplace with custom commands, skills, and hooks.
 
@@ -6,7 +6,7 @@ A Claude Code plugin marketplace with custom commands, skills, and hooks.
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add dariuszparys/claudecode-enhancements
+/plugin marketplace add dariuszparys/claude-code-toolkit
 
 # List available plugins
 /plugin
@@ -211,7 +211,7 @@ Claude: "This introduces a new caching layer. Consider documenting this with /ad
 ## Repository Structure
 
 ```
-claudecode-enhancements/
+claude-code-toolkit/
 ├── .claude-plugin/
 │   └── marketplace.json       # Lists available plugins
 ├── plugins/

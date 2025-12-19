@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE 'docs/adr/.*\\.md$'; then project_root=$(echo \"$file_path\" | sed 's|/docs/adr/.*||'); lint=\"$project_root/node_modules/.bin/markdownlint\"; \"$lint\" --fix \"$file_path\" 2>/dev/null; errors=$(\"$lint\" \"$file_path\" 2>&1); if [ $? -ne 0 ]; then jq -n --arg err \"$errors\" '{decision:\"block\",reason:(\"Markdown lint errors:\\n\" + $err)}'; exit 2; fi; fi; exit 0"
+            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE 'docs/adr/.*\\.md$'; then project_root=$(echo \"$file_path\" | sed -E 's|/docs/adr/.*||'); lint=\"$project_root/node_modules/.bin/markdownlint\"; \"$lint\" --fix \"$file_path\" 2>/dev/null; errors=$(\"$lint\" \"$file_path\" 2>&1); if [ $? -ne 0 ]; then jq -n --arg err \"$errors\" '{decision:\"block\",reason:(\"Markdown lint errors:\\n\" + $err)}'; exit 2; fi; fi; exit 0"
           }
         ]
       },
@@ -24,7 +24,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE 'docs/adr/[0-9]{4}-.*\\.md$'; then project_root=$(echo \"$file_path\" | sed 's|/docs/adr/.*||'); adr_dir=$(dirname \"$file_path\"); \"$project_root/node_modules/.bin/adr-log\" -i -d \"$adr_dir\" -e \"template.md\" 2>/dev/null; fi; exit 0"
+            "command": "file_path=$(jq -r '.tool_input.file_path'); if echo \"$file_path\" | grep -qE 'docs/adr/[0-9]{4}-.*\\.md$'; then project_root=$(echo \"$file_path\" | sed -E 's|/docs/adr/.*||'); adr_dir=$(dirname \"$file_path\"); \"$project_root/node_modules/.bin/adr-log\" -i -d \"$adr_dir\" -e \"template.md\" 2>/dev/null; fi; exit 0"
           }
         ]
       }

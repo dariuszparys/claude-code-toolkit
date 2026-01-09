@@ -25,6 +25,7 @@ Claude Code plugin marketplace with custom commands, skills, and hooks.
   - Use `once: true` for hooks that should run once per session
 - Keep commands focused on a single task
 - Commits follow Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`)
+- Version bumps require CHANGELOG.md update (Keep a Changelog format)
 
 ## Domain
 - **Plugin**: Package containing commands, skills, and/or hooks

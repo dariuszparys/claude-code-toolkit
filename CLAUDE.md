@@ -5,36 +5,30 @@ Claude Code plugin marketplace with custom commands, skills, and hooks.
 ## Stack
 - Claude Code plugins (commands, skills, hooks)
 - Markdown with YAML frontmatter
-- JSON for plugin manifests
+- JSON for plugin manifests (plugin.json, marketplace.json)
 
 ## Structure
-- `plugins/` — Individual plugins, each with `.claude-plugin/plugin.json`
-  - `work-items/` — Platform-agnostic work item optimization
-  - `azure-boards/` — Azure DevOps Boards integration
-  - `dp-tools/` — CLAUDE.md and rules generators
-  - `adr/` — Architecture Decision Records tooling
-- `.claude-plugin/marketplace.json` — Plugin registry for this marketplace
+- `plugins/<name>/` — Individual plugins with `.claude-plugin/plugin.json`
+- `plugins/<name>/hooks/` — Shell scripts for hook commands
+- `.claude-plugin/marketplace.json` — Plugin registry
 
 ## Commands
 - `tree -L 3 plugins/` — View plugin structure
 
 ## Rules
-- Each plugin lives in `plugins/<name>/` with its own `.claude-plugin/plugin.json`
-- Commands go in `plugins/<name>/commands/<namespace>/<cmd>.md`
-- Skills go in `plugins/<name>/skills/<namespace>/SKILL.md`
-- Hooks are defined in `plugin.json` under the `hooks` key
-- Command files use YAML frontmatter for `allowed-tools` and `description`
+- Commands: `plugins/<name>/commands/<namespace>/<cmd>.md` with YAML frontmatter
+  - Frontmatter supports: `description`, `argument-hint`, `allowed-tools`
+- Skills: `plugins/<name>/skills/<namespace>/SKILL.md`
+- Hooks: Defined in `plugin.json` under `hooks` key
+  - Use regex matchers (e.g., `Edit|Write`)
+  - Scripts use `${CLAUDE_PLUGIN_ROOT}` for plugin-relative paths
+  - Use `once: true` for hooks that should run once per session
 - Keep commands focused on a single task
-
-## Adding a Plugin
-1. Create `plugins/<name>/.claude-plugin/plugin.json` with name, version, description
-2. Add commands in `plugins/<name>/commands/<namespace>/<cmd>.md`
-3. Add skills in `plugins/<name>/skills/<namespace>/SKILL.md`
-4. Register in `.claude-plugin/marketplace.json`
+- Commits follow Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`)
 
 ## Domain
-- **Plugin**: A package containing commands, skills, and/or hooks
-- **Command**: Markdown file that expands to a prompt via `/namespace:command`
-- **Skill**: Auto-invoked behavior defined in `SKILL.md`
+- **Plugin**: Package containing commands, skills, and/or hooks
+- **Command**: Markdown file invoked via `/namespace:command`
+- **Skill**: Auto-invoked behavior in `SKILL.md`
 - **Hook**: Shell command triggered by tool events (PostToolUse, etc.)
-- **Marketplace**: A repo with `.claude-plugin/marketplace.json` listing available plugins
+- **Marketplace**: Repo with `.claude-plugin/marketplace.json` listing plugins

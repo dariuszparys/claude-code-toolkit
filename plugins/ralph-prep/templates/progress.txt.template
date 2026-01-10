@@ -1,0 +1,10 @@
+# Progress: ${TASK_NAME}
+# Branch: ${BRANCH_NAME}
+# Total stories: ${STORY_COUNT}
+# Started: ${DATE}
+
+Current story: 1
+Completed: 0
+
+---
+# Story log (append completed stories below)

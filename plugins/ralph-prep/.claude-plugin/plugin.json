@@ -1,0 +1,10 @@
+{
+  "name": "ralph-prep",
+  "version": "1.0.0",
+  "description": "Generate Ralph Wiggum Method artifacts for autonomous AI coding loops",
+  "author": {
+    "name": "Dariusz Parys"
+  },
+  "license": "MIT",
+  "keywords": ["ralph", "automation", "user-stories", "prd", "ai-coding"]
+}

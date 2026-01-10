@@ -28,6 +28,12 @@
       "source": "./plugins/adr",
       "description": "Architecture Decision Records: create ADRs, suggest documenting decisions, auto-lint and regenerate index",
       "version": "1.2.0"
+    },
+    {
+      "name": "ralph-prep",
+      "source": "./plugins/ralph-prep",
+      "description": "Generate Ralph Wiggum Method artifacts for autonomous AI coding loops",
+      "version": "1.0.0"
     }
   ]
 }

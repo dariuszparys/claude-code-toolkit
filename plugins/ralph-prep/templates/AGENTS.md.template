@@ -1,0 +1,55 @@
+# ${TASK_NAME} - Agent Instructions
+
+## Task Overview
+
+${TASK_DESCRIPTION}
+
+## Prior Work
+
+${PRIOR_WORK}
+
+## Key Files and Paths
+
+${KEY_PATHS}
+
+## Gotchas and Edge Cases
+
+${GOTCHAS}
+
+## Scope
+
+${SCOPE}
+
+## Workflow
+
+1. **Read progress.txt** to find the current story number
+2. **Read prd.json** to get story details and acceptance criteria
+3. **Implement the story** following existing codebase patterns
+4. **Run verification**: `${BUILD_COMMAND}`
+5. **Commit** with message: `story US-XXX: <title>`
+6. **Update progress.txt** with the completed story
+7. **Update prd.json** setting `passes: true` for the story
+
+## Commit Message Format
+
+```
+story US-XXX: <short title>
+
+<brief description of what was done>
+```
+
+## Quality Checklist
+
+Before committing each story:
+
+- [ ] Acceptance criteria met
+- [ ] Build passes
+- [ ] Tests pass (if applicable)
+- [ ] No unrelated changes included
+- [ ] Code follows existing patterns
+- [ ] progress.txt updated
+- [ ] prd.json updated
+
+## Constraints
+
+${CONSTRAINTS}

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-01-10
+
+### Changed
+- **ralph-prep**: Use Opus 4.5 model instead of Sonnet for story-decomposer agent
+- **ralph-prep**: Restructure prompt.md.template to prioritize reading context and capturing learnings
+- **ralph-prep**: Add "Codebase Patterns" section to progress.txt.template for accumulated learnings
+
 ## [2.0.0] - 2026-01-10
 
 ### Changed

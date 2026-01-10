@@ -1,6 +1,6 @@
 {
   "name": "ralph-prep",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate Ralph Wiggum Method artifacts for autonomous AI coding loops",
   "author": {
     "name": "Dariusz Parys"

@@ -1,7 +1,7 @@
 ---
 name: story-decomposer
 description: Analyze codebase and decompose tasks into atomic user stories for Ralph Wiggum Method
-model: sonnet
+model: opus
 color: cyan
 tools:
   - Read

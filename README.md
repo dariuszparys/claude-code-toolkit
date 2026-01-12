@@ -16,6 +16,7 @@ A Claude Code plugin marketplace with custom commands, skills, and hooks.
 /plugin install azure-boards    # Azure DevOps integration (requires setup)
 /plugin install dp-tools        # CLAUDE.md and rules generators
 /plugin install adr             # Architecture Decision Records tooling
+/plugin install ralph-prep      # Ralph Wiggum Method: autonomous AI coding loops
 ```
 
 ## Available Plugins
@@ -26,6 +27,7 @@ A Claude Code plugin marketplace with custom commands, skills, and hooks.
 | `azure-boards` | Azure DevOps Boards integration with `az boards` CLI |
 | `dp-tools` | Tools for creating CLAUDE.md files and Claude Code rules |
 | `adr` | Architecture Decision Records: create ADRs, suggest documenting decisions, auto-lint and regenerate index |
+| `ralph-prep` | Ralph Wiggum Method: Generate artifacts for autonomous AI coding loops that can ship features while you sleep |
 
 ---
 
@@ -208,6 +210,60 @@ Claude: "This introduces a new caching layer. Consider documenting this with /ad
 
 ---
 
+## Plugin: ralph-prep
+
+Ralph Wiggum Method tooling for autonomous AI coding loops. Generate artifacts that allow AI agents to ship features autonomously while you sleep.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `/ralph:generate` | Generate Ralph Wiggum Method artifacts (interactive or template-based) |
+
+### Skills (Auto-invoked)
+
+| Skill | Description |
+|-------|-------------|
+| `ralph` | Invoked when setting up autonomous AI coding loops |
+
+### What It Generates
+
+The `/ralph:generate` command creates 6 artifacts in your project:
+
+1. **`prd.json`** - Product requirements with atomic user stories
+2. **`ralph.sh`** - Autonomous loop execution script
+3. **`prompt.md`** - Instructions for the AI agent
+4. **`progress.txt`** - Story completion tracking
+5. **`AGENTS.md`** - Learning capture from each iteration
+6. **`README.md`** - Setup and usage guide
+
+### Key Features
+
+- **Atomic Stories**: One iteration = One story = One commit model
+- **Dependency Ordering**: Stories sequenced by dependencies
+- **Interactive Mode**: Guided artifact generation with prompts
+- **Template Mode**: Use existing files as templates
+- **Progress Tracking**: Track story completion automatically
+- **Learning Capture**: Document insights between iterations
+- **Opus-Powered**: Uses Claude Opus 4.5 for generation
+
+### Example Usage
+
+```
+# Generate Ralph artifacts interactively
+/ralph:generate
+
+# Or use template files
+/ralph:generate path/to/template.json
+```
+
+The generated `ralph.sh` script runs autonomous coding loops:
+```bash
+./ralph.sh  # Ship features while you sleep
+```
+
+---
+
 ## Repository Structure
 
 ```
@@ -234,6 +290,14 @@ claude-code-toolkit/
 │   │   │   └── plugin.json
 │   │   ├── commands/
 │   │   │   └── dp/
+│   │   └── README.md
+│   ├── ralph-prep/            # Ralph Wiggum Method artifacts
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── commands/
+│   │   │   └── ralph/
+│   │   ├── skills/
+│   │   │   └── ralph/
 │   │   └── README.md
 │   └── adr/                   # ADR tooling with hooks
 │       ├── .claude-plugin/

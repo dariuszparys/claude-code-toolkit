@@ -1,0 +1,11 @@
+{
+  "name": "dotnet-inspect",
+  "version": "1.0.0",
+  "description": "Inspect .NET assemblies, explore NuGet package APIs, search types, compare versions, and check vulnerabilities",
+  "author": {
+    "name": "Dariusz Parys",
+    "url": "https://github.com/dariuszparys"
+  },
+  "license": "MIT",
+  "keywords": ["dotnet", "nuget", "assembly", "api", "inspection", "csharp"]
+}

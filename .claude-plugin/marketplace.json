@@ -34,6 +34,12 @@
       "source": "./plugins/ralph-prep",
       "description": "Generate Ralph Wiggum Method artifacts for autonomous AI coding loops",
       "version": "1.0.0"
+    },
+    {
+      "name": "dotnet-inspect",
+      "source": "./plugins/dotnet-inspect",
+      "description": "Inspect .NET assemblies, explore NuGet package APIs, search types, compare versions, and check vulnerabilities",
+      "version": "1.0.0"
     }
   ]
 }
